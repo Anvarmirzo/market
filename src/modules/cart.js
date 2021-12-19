@@ -1,3 +1,5 @@
+import { postData } from './postData';
+
 export const cart = () => {
 	const cartBtn = document.getElementById('cart');
 	const cartModal = document.querySelector('.cart');
@@ -11,7 +13,10 @@ export const cart = () => {
 		cartModal.style.display = 'none';
 	};
 
-	cartBtn.addEventListener('click', openCart);
+	cartBtn.addEventListener('click', () => {
+		openCart();
+		postData();
+	});
 
 	cartCloseBtn.addEventListener('click', closeCart);
 };

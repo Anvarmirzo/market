@@ -16,7 +16,7 @@
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_cart__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/cart */ \"./src/modules/cart.js\");\n\n(0,_modules_cart__WEBPACK_IMPORTED_MODULE_0__.cart)();\n\n\n//# sourceURL=webpack://ozon/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_cart__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/cart */ \"./src/modules/cart.js\");\n/* harmony import */ var _modules_getData__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/getData */ \"./src/modules/getData.js\");\n\r\n\r\n(0,_modules_cart__WEBPACK_IMPORTED_MODULE_0__.cart)();\r\n(0,_modules_getData__WEBPACK_IMPORTED_MODULE_1__.getData)();\r\n\n\n//# sourceURL=webpack://ozon/./src/index.js?");
 
 /***/ }),
 
@@ -26,7 +26,27 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _mod
   \*****************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"cart\": () => (/* binding */ cart)\n/* harmony export */ });\nconst cart = () => {\n\tconst cartBtn = document.getElementById('cart');\n\tconst cartModal = document.querySelector('.cart');\n\tconst cartCloseBtn = document.querySelector('.cart-close');\n\n\tconst openCart = () => {\n\t\tcartModal.style.display = 'flex';\n\t};\n\n\tconst closeCart = () => {\n\t\tcartModal.style.display = 'none';\n\t};\n\n\tcartBtn.addEventListener('click', openCart);\n\n\tcartCloseBtn.addEventListener('click', closeCart);\n};\n\n\n//# sourceURL=webpack://ozon/./src/modules/cart.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"cart\": () => (/* binding */ cart)\n/* harmony export */ });\n/* harmony import */ var _postData__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./postData */ \"./src/modules/postData.js\");\n\r\n\r\nconst cart = () => {\r\n\tconst cartBtn = document.getElementById('cart');\r\n\tconst cartModal = document.querySelector('.cart');\r\n\tconst cartCloseBtn = document.querySelector('.cart-close');\r\n\r\n\tconst openCart = () => {\r\n\t\tcartModal.style.display = 'flex';\r\n\t};\r\n\r\n\tconst closeCart = () => {\r\n\t\tcartModal.style.display = 'none';\r\n\t};\r\n\r\n\tcartBtn.addEventListener('click', () => {\r\n\t\topenCart();\r\n\t\t(0,_postData__WEBPACK_IMPORTED_MODULE_0__.postData)();\r\n\t});\r\n\r\n\tcartCloseBtn.addEventListener('click', closeCart);\r\n};\r\n\n\n//# sourceURL=webpack://ozon/./src/modules/cart.js?");
+
+/***/ }),
+
+/***/ "./src/modules/getData.js":
+/*!********************************!*\
+  !*** ./src/modules/getData.js ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"getData\": () => (/* binding */ getData)\n/* harmony export */ });\nconst getData = async () => {\n\tconst response = await fetch('http://localhost:3000/goods');\n\tconsole.log(await response.json());\n};\n\n\n//# sourceURL=webpack://ozon/./src/modules/getData.js?");
+
+/***/ }),
+
+/***/ "./src/modules/postData.js":
+/*!*********************************!*\
+  !*** ./src/modules/postData.js ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"postData\": () => (/* binding */ postData)\n/* harmony export */ });\nconst postData = async () => {\n\tconst response = await fetch('http://localhost:3000/goods', {\n\t\tmethod: 'POST',\n\t\tbody: JSON.stringify({\n\t\t\ttitle: 'Ведьмак 3',\n\t\t\tprice: 3000,\n\t\t\tsale: true,\n\t\t\timg: 'https://cdn1.ozone.ru/multimedia/c400/1023547851.jpg',\n\t\t\tcategory: 'Игры и софт',\n\t\t}),\n\t\theaders: {\n\t\t\t'Content-Type': 'application/json; charset=UTF-8',\n\t\t},\n\t});\n\tconsole.log(await response.json());\n};\n\n\n//# sourceURL=webpack://ozon/./src/modules/postData.js?");
 
 /***/ })
 
