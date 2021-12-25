@@ -1,4 +1,9 @@
 import { cart } from './modules/cart';
-import { getData } from './modules/getData';
+import { catalog } from './modules/catalog';
+import { load } from './modules/load';
+import { search } from './search';
+
 cart();
-getData();
+load();
+search();
+catalog();
