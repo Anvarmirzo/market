@@ -1,16 +1,14 @@
-export const postData = async () => {
-	const response = await fetch('http://localhost:3000/goods', {
+import { getCartData } from './getData';
+
+export const postData = async (url = '', data) => {
+	const response = await fetch(`http://localhost:3000/${url}`, {
 		method: 'POST',
-		body: JSON.stringify({
-			title: 'Ведьмак 3',
-			price: 3000,
-			sale: true,
-			img: 'https://cdn1.ozone.ru/multimedia/c400/1023547851.jpg',
-			category: 'Игры и софт',
-		}),
+		body: JSON.stringify(data),
 		headers: {
 			'Content-Type': 'application/json; charset=UTF-8',
 		},
 	});
-	console.log(await response.json());
+	if (response.ok) {
+		return await getCartData();
+	}
 };
