@@ -1,4 +1,7 @@
-export const getData = async () => {
-	const response = await fetch('http://localhost:3000/goods');
-	console.log(await response.json());
+import { renderGoodies } from './renderGoodies';
+
+export const getData = async (str = '') => {
+	const response = await fetch(`http://localhost:3000/goods/${str}`);
+	const goodies = await response.json();
+	return goodies;
 };
