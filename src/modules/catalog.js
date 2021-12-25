@@ -2,21 +2,21 @@ import { categoryFilter, searchFilter } from './filters';
 import { getData } from './getData';
 import { renderGoodies } from './renderGoodies';
 
-export const catalog = () => {
+export const catalogToggle = () => {
 	const btnCatalog = document.getElementById('catalog-btn');
 	const modalCatalog = document.querySelector('.catalog');
 	const modalCatalogItems = document.querySelectorAll('.catalog-list li');
 	let isOpen = false;
-	const showModal = (e) => {
+	const showList = (e) => {
 		isOpen = !isOpen;
 
 		isOpen
 			? (modalCatalog.style.display = 'block')
 			: (modalCatalog.style.display = '');
-		document.addEventListener('click', hideModal);
+		document.addEventListener('click', hideList);
 	};
 
-	const hideModal = ({ target }) => {
+	const hideList = ({ target }) => {
 		if (
 			!target.closest(
 				'.catalog, .catalog-list, .catalog-list__switcher, #catalog-btn',
@@ -25,7 +25,7 @@ export const catalog = () => {
 			modalCatalog.style.display = '';
 		}
 	};
-	btnCatalog.addEventListener('click', showModal);
+	btnCatalog.addEventListener('click', showList);
 
 	modalCatalogItems.forEach((item) => {
 		item.addEventListener('click', async function (e) {

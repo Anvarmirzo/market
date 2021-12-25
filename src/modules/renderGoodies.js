@@ -1,3 +1,6 @@
+import { addToCart } from './cart';
+import { searchFilter } from './filters';
+import { getData } from './getData';
 export const renderGoodies = (goodies) => {
 	const goodiesWrapper = document.querySelector('.goods');
 	const fragment = document.createDocumentFragment();
@@ -25,4 +28,15 @@ export const renderGoodies = (goodies) => {
 		fragment.appendChild(article);
 	});
 	goodiesWrapper.append(fragment);
+
+	const goods = document.querySelectorAll('.card');
+	goods.forEach((item) => {
+		const btn = item.querySelector('button');
+		const title = item.querySelector('.card-title').textContent;
+		btn.addEventListener('click', async function (e) {
+			const goodies = await getData();
+			const product = searchFilter(goodies, title);
+			product.length && addToCart(...product);
+		});
+	});
 };
